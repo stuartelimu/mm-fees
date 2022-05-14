@@ -1,14 +1,45 @@
+/**
+ * Required External modules
+ */
 const express = require('express');
+const path = require('path');
 const serveIndex = require('serve-index');
 
-const app = express();
+/**
+ * App Variables
+ */
 
-app.use('/public', express.static('public'));
-app.use('/public', serveIndex('public'));
+const app = express();
+const port = process.env.PORT || "5000";
+
+/**
+ * App Configuration
+ */
+
+app.set("views", path.join(__dirname, "views"));
+app.set("view engine", "pug");
+app.use(express.static(path.join(__dirname, 'public')));
+
+
+/**
+ * Routes Definition
+ */
 
 app.get('/', (req,res) => {
-  res.send('MM Fess');
+  res.render('index', {title: "Home"})
 });
+
+/**
+ * Server Activation
+ */
+
+
+
+
+
+app.use('/public', serveIndex('public'));
+
+
 
 app.use((req, res, next) => {
 
@@ -17,4 +48,4 @@ app.use((req, res, next) => {
 
 });
 
-app.listen(3000, () => console.log('server listening on port 3000.'));
+app.listen(port, () => console.log(`server listening on port ${port}.`));
