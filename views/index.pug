@@ -1,8 +1,8 @@
 extends layout 
 
 block layout-content 
-    div.row
-        div.col-12 
+    div(class="row justify-content-md-center")
+        div.col-sm-10.col-md-8.col-lg-4 
             h1 Hello, world!
             form(action="/", method="post", id="form") 
                 div.mb-3
@@ -14,4 +14,17 @@ block layout-content
                         div(id="amountHelp" class="form-text") Please enter an amount
 
                 button(type="button" class="btn btn-outline-primary") 200,000
+
+            div.my-2 
+                table.table.d-none
+                    tbody
+                        tr
+                            td Charges
+                            td#charge 5,000
+                        tr
+                            td Tax
+                            td#tax 700
+                        tr
+                            td Total
+                            td#total 5,700
 
