@@ -3,7 +3,7 @@ extends layout
 block layout-content 
     div.View 
         h1 Hello, world!
-        form(action="/", method="post") 
+        form(action="/", method="post", id="form") 
             div.mb-3
                 label(for="amount" class="form-label") Send Amount
                 input(type="text" class="form-control" class=errors.amount ? 'is-invalid' : '' id="amount" name="amount" aria-describedby="amountHelp")
