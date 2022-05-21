@@ -1,13 +1,66 @@
 const AMOUNTELM = document.querySelector('#amount');
-const FORM = document.querySelector('#form')
+const FORM = document.querySelector('#form');
 
-const TABLE = document.querySelector('.table')
-const TAX = document.querySelector('#tax')
-const CHARGE = document.querySelector('#charge')
+const TABLE = document.querySelector('.table');
+const TAX = document.querySelector('#tax');
+const TOTAL = document.querySelector('#total');
+
+const CHARGE = document.querySelector('#charge');
 
 FORM.addEventListener('submit', e => e.preventDefault());
 
-
+const WITHDRAW = [
+    {
+        "min": 0,
+        "max": 2500,
+        "rate": 330
+    },
+    {
+        "min": 2501,
+        "max": 5000,
+        "rate": 440
+    },
+    {
+        "min": 5001,
+        "max": 15000,
+        "rate": 700
+    },
+    {
+        "min": 15001,
+        "max": 30000,
+        "rate": 880
+    },
+    {
+        "min": 30001,
+        "max": 45000,
+        "rate": 1210
+    },
+    {
+        "min": 45001,
+        "max": 60000,
+        "rate": 1500
+    },
+    {
+        "min": 60001,
+        "max": 125000,
+        "rate": 1925
+    },
+    {
+        "min": 125001,
+        "max": 250000,
+        "rate": 3575
+    },
+    {
+        "min": 250001,
+        "max": 500000,
+        "rate": 7000
+    },
+    {
+        "min": 500001,
+        "max": 7000000,
+        "rate": 12500
+    }
+]
 
 AMOUNTELM.focus();
 
@@ -16,7 +69,6 @@ AMOUNTELM.addEventListener('keypress', e => {
 })
 
 AMOUNTELM.addEventListener('input', e => {
-    console.log(e.target.value)
     
     let amount = e.target.value;
     let am = amount.replaceAll(',', '');
@@ -24,15 +76,26 @@ AMOUNTELM.addEventListener('input', e => {
 
     if(e.target.value !== '') {
         TABLE.classList.remove('d-none');
-        if(parseInt(am) > 0 && parseInt(am) <= 2500) {
-            CHARGE.textContent = 330;
-            TAX.textContent = parseInt(am) * 0.005;
-        }
-        else {
-            CHARGE.textContent = 0;
-            TAX.textContent = 0;
-        }
+        GETCHARGE(am);
+        console.log(am)
+
     } else {
         TABLE.classList.add('d-none');
     }
 })
+
+const GETCHARGE = amount => {
+
+    CHARGE.textContent = 0;
+    TAX.textContent = 0;
+    TOTAL.textContent = 0;
+
+    WITHDRAW.forEach(element => {
+        if(parseInt(amount) > element.min && parseInt(amount) <= element.max) {
+            CHARGE.textContent = element.rate;
+            TAX.textContent = parseInt(amount) * 0.005;
+            TOTAL.textContent = parseInt(CHARGE.textContent) + parseInt(TAX.textContent);
+            TOTAL.textContent = TOTAL.textContent.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+        }
+    })
+}
