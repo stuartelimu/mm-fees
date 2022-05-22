@@ -1,4 +1,6 @@
 const AMOUNTELM = document.querySelector('#amount');
+const AMOUNTHELP = document.querySelector('#amountHelp');
+
 const FORM = document.querySelector('#form');
 
 const TABLE = document.querySelector('.table');
@@ -73,11 +75,22 @@ AMOUNTELM.addEventListener('input', e => {
     let amount = e.target.value;
     let am = amount.replaceAll(',', '');
     AMOUNTELM.value = am.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    AMOUNTHELP.textContent = "Enter Amount";
+    AMOUNTHELP.className = 'form-text';
+    AMOUNTELM.className = 'form-control';
+
 
     if(e.target.value !== '') {
         TABLE.classList.remove('d-none');
         GETCHARGE(am);
-        console.log(am)
+        
+        if(parseInt(am) > WITHDRAW[WITHDRAW.length - 1].max || parseInt(am) <= WITHDRAW[0].min) {
+            AMOUNTHELP.textContent = "Invalid Amount";
+            AMOUNTHELP.classList.add('invalid-feedback');
+            AMOUNTELM.classList.add('is-invalid');
+            TABLE.classList.add('d-none');
+            
+        }
 
     } else {
         TABLE.classList.add('d-none');
