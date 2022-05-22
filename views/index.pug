@@ -1,30 +1,30 @@
 extends layout 
 
 block layout-content 
-    div(class="row justify-content-md-center")
+    div(class="row justify-content-md-center mt-5")
         div.col-xs-10.col-sm-10.col-md-8.col-lg-4 
             h3 Withdraw!
             form(action="/", method="post", id="form") 
                 div.mb-3
-                    label(for="amount" class="form-label") Send Amount
+                    label(for="amount" class="form-label") Amount
                     input(type="text" class="form-control" class=errors.amount ? 'is-invalid' : '' id="amount" name="amount" aria-describedby="amountHelp")
                     if errors.amount
                         div.invalid-feedback #{errors.amount.msg}
                     else
-                        div(id="amountHelp" class="form-text") Please enter an amount
+                        div(id="amountHelp" class="form-text") Enter amount
 
-                button(type="button" class="btn btn-outline-primary") 200,000
+                //- button(type="button" class="btn btn-outline-primary") 200000
 
             div.my-2 
                 table.table.d-none
                     tbody
                         tr
                             td Charges
-                            td#charge 5,000
+                            td#charge 0
                         tr
                             td Tax
-                            td#tax 700
+                            td#tax 0
                         tr
                             td Total
-                            td#total 5,700
+                            td#total 0
 
