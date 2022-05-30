@@ -1,9 +1,6 @@
-const { cache } = require("pug/lib");
-
 const CACHE_NAME = 'mm-fees-cache';
 const toCache = [
     '/',
-    'layout.pug',
 ]
 
 self.addEventListener('install', function(event) {

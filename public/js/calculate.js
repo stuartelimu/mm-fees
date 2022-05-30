@@ -75,7 +75,7 @@ AMOUNTELM.addEventListener('input', e => {
     let amount = e.target.value;
     let am = amount.replaceAll(',', '');
     AMOUNTELM.value = am.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-    AMOUNTHELP.textContent = "Enter Amount";
+    AMOUNTHELP.textContent = "";
     AMOUNTHELP.className = 'form-text';
     AMOUNTELM.className = 'form-control';
 

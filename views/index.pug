@@ -1,17 +1,34 @@
 extends layout 
 
 block layout-content 
+    ul(class="nav nav-pills")
+        li(class="nav-item")
+            a(class="nav-link active rounded-pill" aria-current="page" href="#") Airtel
+        li(class="nav-item")
+            a(class="nav-link rounded-pill" href="#") MTN
+
     div(class="row justify-content-md-center mt-5")
+
+        
+
+
         div.col-xs-10.col-sm-10.col-md-8.col-lg-4 
-            h3 Withdraw!
+
+            ul(class="nav nav-pills nav-fill mb-1")
+                li(class="nav-item dropdown dropdown-center")
+                    a(class="nav-link dropdown-toggle rounded-pill active" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false") Withdraw Charges
+                    ul(class="dropdown-menu") 
+                        li
+                            a(class="dropdown-item" href="#") Sending Fees
+                            
             form(action="/", method="post", id="form") 
                 div.mb-3
                     label(for="amount" class="form-label") Amount
-                    input(type="text" class="form-control" class=errors.amount ? 'is-invalid' : '' id="amount" name="amount" aria-describedby="amountHelp")
+                    input(type="text" class="form-control border-bottom" class=errors.amount ? 'is-invalid' : '' id="amount" name="amount" aria-describedby="amountHelp")
                     if errors.amount
                         div.invalid-feedback #{errors.amount.msg}
                     else
-                        div(id="amountHelp" class="form-text") Enter amount
+                        div(id="amountHelp" class="form-text") 
 
                 //- button(type="button" class="btn btn-outline-primary") 200000
 
