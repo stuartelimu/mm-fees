@@ -23,8 +23,8 @@ block layout-content
                             
             form(action="/", method="post", id="form") 
                 div.mb-3
-                    label(for="amount" class="form-label") Amount
-                    input(type="text" class="form-control border-bottom" class=errors.amount ? 'is-invalid' : '' id="amount" name="amount" aria-describedby="amountHelp")
+                    label(for="amount" class="form-label") 
+                    input(type="text" class="form-control border-bottom" class=errors.amount ? 'is-invalid' : '' id="amount" name="amount" placeholder="Enter Amount" aria-describedby="amountHelp")
                     if errors.amount
                         div.invalid-feedback #{errors.amount.msg}
                     else
