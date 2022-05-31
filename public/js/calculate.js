@@ -9,6 +9,8 @@ const TOTAL = document.querySelector('#total');
 
 const CHARGE = document.querySelector('#charge');
 
+const LINKS = document.querySelectorAll('.nav-link');
+
 FORM.addEventListener('submit', e => e.preventDefault());
 
 const WITHDRAW = [
@@ -112,3 +114,16 @@ const GETCHARGE = amount => {
         }
     })
 }
+
+LINKS.forEach((link,key) => {
+    link.addEventListener('click', (e) => {
+        e.preventDefault();
+        console.log(key);
+        link.classList.toggle("active");
+        LINKS.forEach((el, els) => {
+            if(key != els) {
+                el.classList.remove("active");
+            }
+        })
+    })
+})
