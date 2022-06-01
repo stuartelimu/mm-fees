@@ -1,5 +1,5 @@
 {
-    "name": "MM Fees",
+    "name": "MM Charges",
     "short_name": "MM Charges",
     "description": "Mobile Money Fees Calculator",
     "icons": [
@@ -20,7 +20,7 @@
       }
     ],
     "start_url": "/",
-    "display": "fullscreen",
+    "display": "standalone",
     "theme_color": "#FFFFFF",
     "background_color": "#FFFFFF"
 }
