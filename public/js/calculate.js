@@ -9,7 +9,7 @@ const TOTAL = document.querySelector('#total');
 
 const CHARGE = document.querySelector('#charge');
 
-const LINKS = document.querySelectorAll('.nav-link');
+const LINKS = document.querySelectorAll('#operator .nav-link');
 
 FORM.addEventListener('submit', e => e.preventDefault());
 
