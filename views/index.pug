@@ -8,6 +8,14 @@ block layout-content
 
         div.col-xs-10.col-sm-10.col-md-8.col-lg-4 
 
+            ul(class="nav nav-pills mb-2 justify-content-between")
+                li(class="nav-item")
+                    a(class="nav-link rounded-pill" aria-current="page" href="") 
+                li(class="nav-item")
+                    a(class="nav-link rounded-pill active shadow" href="") FAQs 
+            
+
+
             div.card.p-2.shadow
                 ul(class="nav nav-pills nav-fill mb-2")
                     li(class="nav-item")
@@ -17,7 +25,7 @@ block layout-content
 
                 select(class="form-select rounded-pill" aria-label="Default select example")
                     option(selected) Withdraw Charges
-                    option(value="1") Sending Fees
+                    option(value="1", disabled) Sending Fees
 
             form(action="/", method="post", id="form") 
                 div.mb-3
