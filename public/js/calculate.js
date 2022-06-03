@@ -11,6 +11,7 @@ const CHARGE = document.querySelector('#charge');
 
 const LINKS = document.querySelectorAll('#operator .nav-link');
 
+
 FORM.addEventListener('submit', e => e.preventDefault());
 
 const WITHDRAW = [
@@ -85,6 +86,9 @@ AMOUNTELM.addEventListener('input', e => {
     if(e.target.value !== '') {
         TABLE.classList.remove('d-none');
         GETCHARGE(am);
+
+        let OPERATOR = document.querySelector('#operator .active');
+        console.log(OPERATOR.textContent)
         
         if(parseInt(am) > WITHDRAW[WITHDRAW.length - 1].max || parseInt(am) <= WITHDRAW[0].min) {
             AMOUNTHELP.textContent = "Invalid Amount";
@@ -118,8 +122,8 @@ const GETCHARGE = amount => {
 LINKS.forEach((link,key) => {
     link.addEventListener('click', (e) => {
         e.preventDefault();
-        console.log(key);
         link.classList.toggle("active");
+        getCharge();
         LINKS.forEach((el, els) => {
             if(key != els) {
                 el.classList.remove("active");
@@ -127,3 +131,28 @@ LINKS.forEach((link,key) => {
         })
     })
 })
+
+const getCharge = () => {
+    let amount = AMOUNTELM.value;
+    let am = amount.replaceAll(',', '');
+
+    if(amount !== '') {
+        TABLE.classList.remove('d-none');
+        GETCHARGE(am);
+
+        let OPERATOR = document.querySelector('#operator .active');
+        console.log(OPERATOR.textContent)
+        
+        if(parseInt(am) > WITHDRAW[WITHDRAW.length - 1].max || parseInt(am) <= WITHDRAW[0].min) {
+            AMOUNTHELP.textContent = "Invalid Amount";
+            AMOUNTHELP.classList.add('invalid-feedback');
+            AMOUNTELM.classList.add('is-invalid');
+            TABLE.classList.add('d-none');
+            
+        }
+
+    } else {
+        TABLE.classList.add('d-none');
+    }
+}
+
