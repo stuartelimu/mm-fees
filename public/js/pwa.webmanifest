@@ -1,7 +1,7 @@
 {
     "name": "Charges",
     "short_name": "Charges",
-    "description": "Mobile Money Fees Calculator",
+    "description": "Mobile Money Charges",
     "icons": [
       {
         "src": "/../images/icon-32.png",
